@@ -43,6 +43,21 @@ server.get("/is-today-holiday",(request,response)=>{
     
 })
 
+//BONUS:
+server.get("/holidays/:MonthNumber",(request,response)=>{
+    let number=request.params.MonthNumber;
+    let object=[]
+    parseInt(number)
+    for(let k=0;k<holidays.length;k++){
+        if(number===holidays[k].date[0] || number===holidays[k].date[0]+holidays[k].date[1]){
+            object=[...object,holidays[k]]
+          
+        }
+    }
+
+    response.send(object)
+})
+
 
 
 server.listen(4000)
